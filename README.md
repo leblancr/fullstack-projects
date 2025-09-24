@@ -1,5 +1,5 @@
-# fullstack projects
-fullstack projects
+# fullstack-projects
+full stack projects
 parent umbrella project for full stack apps
 
 Fullstack Projects
