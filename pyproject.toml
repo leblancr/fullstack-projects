@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "fullstack-projects"
+version = "0.1.0"
+description = "Umbrella repo for Django, Flask, FastAPI portfolio apps"
+authors = ["Rich LeBlanc <rich.leblanc1@proton.me>"]
+packages = [
+    { include = "django-tutorial" },
+    { include = "flask_task_manager" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^5.2"          # your Django version
+flask = "^3.1"           # your Flask version
+fastapi = "^0.111"       # your FastAPI version
+uvicorn = "^0.26"        # optional, if FastAPI needs it
+gunicorn = "^22.0"
+werkzeug = "^3.1"        # for DispatcherMiddleware
+psycopg = {extras = ["binary"], version = "^3.2.10"}
+whitenoise = "^6.11.0"
+flask-sqlalchemy = "^3.0"
+flask-pymongo = "^3.0"
+flask-cors = "^4.0"
+psycopg2-binary = "^2.9.10"
+
+[tool.poetry.group.dev.dependencies]
