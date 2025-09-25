@@ -8,7 +8,7 @@ from fastapi.middleware.wsgi import WSGIMiddleware
 project_root = os.path.dirname(os.path.abspath(__file__))  # fullstack-projects folder
 
 # Django
-sys.path.insert(0, os.path.join(project_root, "django-tutorial"))
+sys.path.insert(0, os.path.join(project_root, "django_tutorial"))
 
 # Flask
 sys.path.insert(0, os.path.join(project_root, "flask_task_manager"))

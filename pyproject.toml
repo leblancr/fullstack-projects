@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Umbrella repo for Django, Flask, FastAPI portfolio apps"
 authors = ["Rich LeBlanc <rich.leblanc1@proton.me>"]
 packages = [
-    { include = "django-tutorial" },
+    { include = "django_tutorial" },
     { include = "flask_task_manager" },
 ]
 

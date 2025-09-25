@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Results{% endblock %}
+
+{% block content %}
+<div id="content" class="results-page">
+  <div class="text-box">
+    <h2>{{ question.question_text|slice:":-1" }}</h2>
+    <ul>
+      {% for choice in question.choice_set.all %}
+        <li class="choice-container {{ choice.image_size }}">
+            <label>
+<!--              {# INLINE icons show always inside label #}-->
+<!--              <img src="{% static 'polls/images/' %}{{ choice.image_url }}"-->
+<!--                   alt="{{ choice.choice_text }}"-->
+<!--                   class="inline-icon left-icon">-->
+
+              {{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}
+            </label>
+        </li>
+      {% endfor %}
+    </ul>
+    <a href="{% url 'polls:detail' question.id %}" class="btn">Vote again?</a>
+  </div>
+</div>
+{% endblock %}

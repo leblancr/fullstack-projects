@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Question{% endblock %}
+
+{% block content %}
+<div class="text-box">
+  <h2>{{ question.question_text }}</h2>
+  <form action="{% url 'polls:vote' question.id %}" method="post">
+    {% csrf_token %}
+    {% if error_message %}
+      <p><strong>{{ error_message }}</strong></p>
+    {% endif %}
+    {% for choice in question.choice_set.all %}
+      <div class="choice-container {{ choice.image_size }}">
+        <label>
+          {# INLINE icons show always inside label #}
+          {% if choice.image_size == "inline" and choice.image_url %}
+            <img src="{% static 'polls/images/' %}{{ choice.image_url }}"
+                 alt="{{ choice.choice_text }}"
+                 class="inline-icon left-icon">
+          {% endif %}
+
+          <input type="radio" name="choice" value="{{ choice.id }}">
+          {{ choice.choice_text }}
+        </label>
+
+        {# Hover images only for non-inline sizes #}
+        {% if choice.image_size != "inline" and choice.image_url %}
+          <div class="choice-image">
+            <a href="{% static 'polls/images/' %}{{ choice.image_url }}" target="_blank">
+              <img src="{% static 'polls/images/' %}{{ choice.image_url }}" alt="{{ choice.choice_text }}">
+            </a>
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+    <input type="submit" value="Vote" class="btn">
+  </form>
+</div>
+{% endblock %}

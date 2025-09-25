@@ -1,0 +1,58 @@
+{% load static %}
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Inject background style early so the correct image is present for first paint -->
+    <script>
+      (function() {
+        const savedBg = localStorage.getItem("background");
+        const defaultBg = "/static/polls/images/autumn-colors.jpg";
+        const bg = savedBg || defaultBg;
+        const css = "body{background-image: url('" + bg + "'); background-size: cover; background-position: center center; background-repeat: no-repeat;}";
+        const s = document.createElement("style");
+        s.textContent = css;
+        document.head.appendChild(s);
+      })();
+    </script>
+
+    <link rel="stylesheet" href="{% static 'polls/styles.css' %}">
+  </head>
+  <body data-bg="{{ bg_url }}">
+    <script>
+      // Immediately apply saved background before page renders
+      const savedBg = localStorage.getItem("background");
+      const defaultBg = "/static/polls/images/autumn-colors.jpg"; // pick your default
+
+      if (savedBg) {
+          document.body.style.backgroundImage = `url('${savedBg}')`;
+      } else {
+          document.body.style.backgroundImage = `url('${defaultBg}')`;
+      }
+    </script>
+    <!-- fixed header with Home + Background buttons -->
+    <header>
+      <a href="{% url 'polls:index' %}" class="header-button">Home</a>
+      <div class="dropdown">
+        <button id="bgButton" class="header-button">Season</button>
+        <ul class="bg-menu">
+          <li data-bg="/static/polls/images/pinney_sunset.jpg">Winter</li>
+          <li data-bg="/static/polls/images/beau_by_jump.jpg">Spring</li>
+          <li data-bg="/static/polls/images/Antonio-Cardoso1.jpg">Summer</li>
+          <li data-bg="/static/polls/images/autumn-colors.jpg">Autumn</li>
+        </ul>
+      </div>
+    </header>
+    <!-- Only this div will be replaced when navigating -->
+    <div id="content">
+      {% block content %}{% endblock %}
+    </div>
+    <footer class="corner-icons">
+      <img src="{% static 'polls/images/32px-django-logo.png' %}" id="django-icon" class="corner-icon" alt="Django">
+      <img src="{% static 'polls/images/32px-Postgresql_elephant.svg' %}" id="postgres-icon" class="corner-icon" alt="PostgreSQL">
+    </footer>
+    <script src="{% static 'polls/script.js' %}"defer></script>
+  </body>
+</html>

@@ -1,0 +1,256 @@
+html, body {
+    /* height: 100%; */
+    margin: 0;
+}
+
+body {
+    /* background: black url("/static/polls/images/pinney_sunset.jpg") no-repeat top center; */
+    background-size: cover;  /* fills viewport, keeps aspect ratio */
+    /* background-size: contain;   /* whole image fits inside viewport */
+    background-repeat: no-repeat;
+    background-position: center center;
+    font-family: Arial, sans-serif;
+    color: black;
+     /* padding-top: 60px;      leave room for fixed header if any */
+    min-height: 100vh;
+}
+
+header {
+    align-items: center;   /* vertical alignment */
+    background-color: rgba(0, 0, 0, 0.2); /* semi-transparent */
+    box-sizing: border-box;  /* ADD THIS */
+    display: flex;
+    top: 0;
+    left: 0;
+    width: 100%;
+    justify-content: space-between;  /* Home left, Season right */
+    padding: 10px 20px;
+    z-index: 100;
+    display: flex;         /* make children horizontal */
+
+}
+
+header .dropdown {
+  justify-content: space-between
+}
+
+#content {
+    margin-top: 10px;   /* space between home button and textbox */
+}
+
+footer.corner-icons {
+  position: fixed;   /* stays pinned to viewport */
+  bottom: 10px;      /* 10px up from bottom */
+  right: 10px;       /* 10px in from right */
+  display: flex;
+  gap: 5px;          /* spacing between icons */
+  z-index: 1000;     /* make sure it stays visible */
+}
+
+a.btn {
+  display: block;     /* makes sure <a> behaves like submit button */
+}
+
+button.header-button {
+    font-family: inherit; /* make sure font matches <a> */
+}
+
+.bg-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0; /* under button */
+  background: white;
+  background-color: rgba(0,0,0,0.7);  /* match text-box transparency */
+  border: 1px solid black;
+  color: white;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bg-menu li {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.bg-menu li:hover {
+  background-color: #eee;
+}
+
+.btn {
+  display: block;
+  margin: 20px auto;
+  background-color: gray;
+  color: black;
+  text-decoration: none;
+  text-align: center;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  width: fit-content;
+}
+
+.btn:link,
+.btn:visited {
+  color: black;       /* ensure consistent text color */
+}
+
+.btn:hover {
+  background-color: darkgray;
+}
+
+.choice-container {
+  position: relative;
+  display: block;
+  margin: 8px 0;
+}
+
+.choice-container label {
+  margin: 0;
+}
+
+/* Hover previews */
+.choice-container.small .choice-image img { max-width: 150px; }
+.choice-container.normal .choice-image img { max-width: 400px; }
+.choice-container.large .choice-image img { max-width: 800px; }
+
+.choice-image {
+  display: none;
+  position: absolute;
+  top: 0;       /* align with the top of the label */
+  left: 100%;   /* push it to the right of the choice */
+  margin-left: 10px; /* add some spacing */
+  z-index: 1000;
+  background: #000;
+  border: 1px solid #000;
+  padding: 2px; /* the black frame around image */
+}
+
+.choice-container:hover .choice-image {
+  display: block;
+}
+
+.choice-image img {
+  /* max-width: 600px;  adjust size */
+  max-width: none; /* allow natural size */
+  height: auto;
+  display: block;
+}
+
+.corner-icons {
+  display: flex;
+  gap: 4px;   /* space between icons */
+}
+
+.corner-icon {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown:hover .bg-menu {
+  display: block;
+}
+
+.header-button, .header-button:link, .header-button:visited, button.header-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;  /* same font size */
+    line-height: 1.2; /* align text vertically */
+}
+
+.header-button:hover {
+    background-color: #333;
+}
+
+.header-button:hover {
+    background-color: #333;
+}
+
+/* Inline icons */
+.inline-icon {
+  width: 20px;   /* or auto if you want default size */
+  height: auto;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.main-content {
+    max-width: 800px;       /* optional, keeps content narrow */
+    margin-left: 20px;      /* left-align content */
+}
+
+.results-page .text-box {
+  display: inline-block;         /* keep shrinkwrap (doesn't fill width) */
+  vertical-align: top;           /* align with other content if present */
+  text-align: left !important;   /* ensure text inside is left-aligned */
+  margin-left: 20px;             /* keep your spacing */
+  max-width: 800px;
+  width: auto;
+}
+
+/* Make sure lists inside are using normal left padding */
+.results-page .text-box ul,
+.results-page .text-box ol {
+  padding-left: 1.2rem;          /* restore bullet/number indent */
+  margin-left: 0;
+  text-align: left;
+}
+
+/* shrink-wrapped text box */
+.text-box {
+    background-color: rgba(0,0,0,0.7);
+    color: white;
+    padding: 0px 30px 1px 30px; /* top, right, bottom, left */    border-radius: 12px;
+    display: inline-block;
+    /* font-family: "Georgia", serif; change font */
+    font-size: 16px;              /* optional */
+    /* font-weight: bold;            optional */
+    margin-left: 20px;           /* push it away from the left edge */
+    text-align: left;  /* left-align text inside the box */
+
+}
+
+.text-box p,
+.text-box h1,
+.text-box h2,
+.text-box h3 {
+    margin-top:  0.5em;   /* space above text*/
+    margin-bottom: 0.5em; /* keep some space below if you want */
+}
+
+/* Force the results page content to be left-aligned
+   while keeping the text-box shrink-wrapped like before */
+.results-page {
+  text-align: left !important;   /* make child inline-blocks align left */
+}
+
+.vote-again {
+  display: block;
+  margin: 20px auto 0;
+  text-align: center;
+  background-color: gray;
+  color: black;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  width: fit-content;
+}
+
+.vote-again:hover {
+  background-color: darkgray;
+}
