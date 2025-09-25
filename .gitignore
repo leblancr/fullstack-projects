@@ -50,3 +50,6 @@ pylint-global.txt
 # Other
 *.env
 .env.*
+
+# Build artifacts
+dist/
