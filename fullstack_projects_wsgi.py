@@ -1,11 +1,21 @@
 import os
 import sys
+import subprocess
 
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
 from fastapi.middleware.wsgi import WSGIMiddleware
 
 # Add the outer Poetry folder to PYTHONPATH so Python can find the inner Django package
 project_root = os.path.dirname(os.path.abspath(__file__))  # fullstack-projects folder
+
+frontend_dir = os.path.join(project_root, "flask_task_manager", "frontend")
+
+subprocess.Popen(
+    ["npm", "start"],
+    cwd=frontend_dir,
+    stdout=subprocess.PIPE,
+    stderr=subprocess.PIPE,
+)
 
 # Django
 sys.path.insert(0, os.path.join(project_root, "django_tutorial"))
