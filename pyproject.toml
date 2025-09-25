@@ -22,5 +22,6 @@ flask-sqlalchemy = "^3.0"
 flask-pymongo = "^3.0"
 flask-cors = "^4.0"
 psycopg2-binary = "^2.9.10"
+pandas = "^2.3.2"
 
 [tool.poetry.group.dev.dependencies]

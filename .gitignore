@@ -1,0 +1,52 @@
+# Bytecode and compiled files
+__pycache__/
+*.py[cod]
+*.pyo
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# IDE configs
+.idea/
+.vscode/
+
+# OS / editor artifacts
+.DS_Store
+Thumbs.db
+
+# Poetry
+# Note: Keep poetry.lock if you're building applications or care about deterministic installs
+# Remove this ignore line if you're sharing the project or deploying it
+#poetry.lock
+
+# Pytest
+.pytest_cache/
+.coverage
+htmlcov/
+.cache/
+
+# MyPy / Type Checking
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Test / Coverage reports
+.tox/
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+
+# Linting tools
+pylint-report.txt
+pylint-global.txt
+
+# Other
+*.env
+.env.*
