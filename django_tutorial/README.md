@@ -168,7 +168,7 @@ user: postgres
 -------------------------------------------------------------
 Aiven:
 Service URI
-    postgres://avnadmin:REMOVED@postgres-db-django-tutorial.d.aivencloud.com:27298/defaultdb?sslmode=require
+    postgres://avnadmin:<pwd>@postgres-db-django-tutorial.d.aivencloud.com:27298/defaultdb?sslmode=require
 Database name
     defaultdb
 Host
@@ -178,7 +178,7 @@ Port
 User
     avnadmin
 Password
-    REMOVED
+    
 
 SSL mode
     require
@@ -189,7 +189,7 @@ Connection limit
 Aiven:
 pg_dump -Fc -U rich django_tutorial -f django_tutorial.dump
 pg_restore \
-    -d "postgresql://avnadmin:REMOVED@postgres-db-django-tutorial.d.aivencloud.com:27298/defaultdb?sslmode=require" \
+    -d "postgresql://avnadmin:<pwd>>@postgres-db-django-tutorial.d.aivencloud.com:27298/defaultdb?sslmode=require" \
     --no-owner \
     --clean \
     --if-exists \
